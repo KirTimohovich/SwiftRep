@@ -2,4 +2,3 @@ import UIKit
 
 var projectDescription: String = "Приложение для изучения Swift, позволяющее изучать теорию, решать практические задания с проверкой ДЗ и отслеживанием прогресса обучения"
 
-var forTestCommit = "test"
