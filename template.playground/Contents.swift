@@ -1,5 +1,3 @@
 import UIKit
 
-var greeting = "Hello, playground"
-
-var testing = "12341"
+var projectDescription: String = "Приложение для изучения Swift, позволяющее изучать теорию, решать практические задания с проверкой ДЗ и отслеживанием прогресса обучения"
