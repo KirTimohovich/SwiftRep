@@ -4,47 +4,47 @@ var projectDescription: String = "Приложение для изучения S
 
 // Функции
 
-//var greeting = "Hello, playground"
-//
-//func greetingPrints() {
-//    print("Hello, playground")
-//}
-//
-//greetingPrints()
-//
-//
-//func greetingMessage(message: String) {
-//    print(message)
-//}
-//
-//greetingMessage(message: "Привет")
-//
-//func great(recipient: String, message: String) {
-//    print("\(message), \(recipient)")
-//}
-//
-//great(recipient: "PETIA", message: "go home")
-//
-//
-//func findUser(id: Int) -> String {
-//    if id == 0 {
-//        return "Kiryl"
-//    } else {
-//        return "Guest"
-//    }
-//}
-//
-//print(findUser(id: 0))
-//
-//func greatingNew(_ message: String) -> String {
-//    if message == "Kir" {
-//        return "Tim"
-//    } else {
-//        return "Kirill"
-//    }
-//}
-//
-//print(greatingNew("Kir"))
+var greeting = "Hello, playground"
+
+func greetingPrints() {
+    print("Hello, playground")
+}
+
+greetingPrints()
+
+
+func greetingMessage(message: String) {
+    print(message)
+}
+
+greetingMessage(message: "Привет")
+
+func great(recipient: String, message: String) {
+    print("\(message), \(recipient)")
+}
+
+great(recipient: "PETIA", message: "go home")
+
+
+func findUser(id: Int) -> String {
+    if id == 0 {
+        return "Kiryl"
+    } else {
+        return "Guest"
+    }
+}
+
+print(findUser(id: 0))
+
+func greatingNew(_ message: String) -> String {
+    if message == "Kir" {
+        return "Tim"
+    } else {
+        return "Kirill"
+    }
+}
+
+print(greatingNew("Kir"))
 
 func add(x: Int, y: Int) -> Int {
     return x + y
