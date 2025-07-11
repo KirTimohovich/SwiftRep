@@ -11,6 +11,7 @@ import Foundation
 */
 
 func printHi(name userName:String) -> () {
+    print("Hello, world!")
     print("Hello, \(userName)")
 }
 printHi(name: "Kiryl")
