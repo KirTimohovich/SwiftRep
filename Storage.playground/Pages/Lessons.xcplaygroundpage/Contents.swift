@@ -141,3 +141,46 @@ let num: (Int, Int) -> Int = {
 }
 
 print(num(10, 10))
+
+// Опционалы
+
+var name: String?
+name = "Kiryl"
+//print(type(of: name))
+
+// Принудительное извлечение force unwrap
+
+//print(name!)
+
+// Безопасное извлечение
+
+//if let name = name {
+//    print(name)
+//}
+
+// Guard
+//func greet(name: String?) {
+//    guard let unwrappedName = name else {
+//        print("Значение отсутствует")
+//        return
+//    }
+//    print("\(unwrappedName)")
+//}
+//
+//greet(name: nil)
+//greet(name: "Kiryl")
+
+// If let
+
+if let unwrappedNameNew = name {
+    print(unwrappedNameNew)
+}
+
+
+enum timeOfYear: Int {
+    case noy = 12
+    case noy2 = 13
+}
+
+
+print(timeOfYear.noy.rawValue)
