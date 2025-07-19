@@ -4,7 +4,6 @@ var projectDescription: String = "Приложение для изучения S
 
 // Функции
 
-var greeting = "Hello, playground"
 
 func greetingPrints() {
     print("Hello, playground")
@@ -184,3 +183,163 @@ enum timeOfYear: Int {
 
 
 print(timeOfYear.noy.rawValue)
+
+
+// Кортежи (Tuples)
+// Используется при возрате нескольких значений из функции
+
+let tuple = (1, "Hello", true, 2.4)
+
+let (number, greeting, check, decimal) = tuple
+
+number
+greeting
+check
+decimal
+
+tuple.0
+tuple.1
+
+
+let(_, _, _, ded) = tuple
+
+var nameTuple = (index: 1, phrase: "Hello", boolValue: true, boubleValue: 2.4)
+
+nameTuple.phrase
+
+nameTuple.index = 2
+
+func getSumAndCount(array: [Int]) -> (sum: Int, count: Int) {
+    var sum = 0
+    for element in array {
+        sum += element
+    }
+    return (sum, array.count)
+}
+
+let result = getSumAndCount(array: [2, 3, 5, 6, 7])
+
+print("Сумма чисел в массиве: \(result.sum), количество чисел: \(result.count)")
+
+// Массив (Array)
+
+let constArray: [String] = ["a", "b", "c", "d"]
+
+constArray.count
+constArray[constArray.count - 1]
+
+var array: [String] = ["21"]
+if array.isEmpty {
+    print("Пустой массив")
+}
+
+array += constArray
+print(array)
+
+array.append("1231312")
+
+array[0] = "1"
+
+print(array)
+
+array.insert("test", at: 3)
+print(array)
+
+array.remove(at: 4)
+
+print(array)
+
+let nnnnumbers = Array(1...20)
+
+
+let numRepeat = [Int](repeating: 10, count: 5)
+
+let money = [100, 20, 100, 10, 50]
+var wallet = 0
+for mon in money {
+    wallet += mon
+}
+print(wallet)
+
+
+var walletSum = 0
+for index in 0..<money.count {
+    print(money[index])
+    walletSum += money[index]
+}
+
+
+for (index, value) in money.enumerated() {
+    print(index, value)
+}
+
+
+// Словари (Dictionary)
+
+let dict: [Int: String] = [5: "Иванов", 20: "Петров", 3: "Сидоров"]
+dict.isEmpty
+
+var varDict: [String: String] = [:]
+varDict["computer"] = "компьютер"
+varDict["car"] = "машина"
+varDict["apple"] = "яблоко"
+varDict.updateValue("тест", forKey: "test")
+
+
+varDict.sorted(by: <)
+
+varDict.removeValue(forKey: "test")
+print(varDict)
+
+for key in varDict.keys {
+    print(key, varDict[key]!)
+}
+
+for (key, value) in varDict {
+    print(key, value)
+}
+
+
+// Set
+
+var set: Set<Int> = [1, 5, 6, 78, 9]
+set.insert(9)
+
+
+let set1: Set = [1, 3, 5, 7, 8]
+let set2: Set = [2, 3, 5, 9]
+
+//Пересечения
+print(set1.intersection(set2))
+
+//Уникальные значение
+print(set1.symmetricDifference(set2).sorted())
+
+//Обьединение
+print(set1.union(set2).sorted())
+
+//Вычитание
+print(set1.subtracting(set2).sorted())
+print(set2.subtracting(set1).sorted())
+
+print(set1.count)
+print(set1.contains(2))
+
+// Generics (Дженерики)
+
+func printArray<T>(_ array: [T]) {
+    for el in array {
+        print(el)
+    }
+}
+
+printArray(["ä", "b"])
+printArray([1, 2, 3])
+
+enum OptionalValue<T> {
+    case none
+    case some(T)
+}
+
+let someInt: OptionalValue<Int> = .some(20)
+let noValue: OptionalValue<Int> = .none
