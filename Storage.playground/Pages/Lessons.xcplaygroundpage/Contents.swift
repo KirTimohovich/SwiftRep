@@ -343,3 +343,240 @@ enum OptionalValue<T> {
 
 let someInt: OptionalValue<Int> = .some(20)
 let noValue: OptionalValue<Int> = .none
+
+
+// Структуры и классы
+// Private - Доступ в пределах области видимости (стрктуры/класса)
+// internal - доступ в рамках одного модуля (по умолчанию)
+// Public - доступ в разных модулях (например соторнние библиотеки)
+// fileprivate - доступ в пределах одного файла
+// open - доступ везде, можно наследовать и переопределять (только для классов)
+
+class User {
+    var name: String
+    var age: Int
+    private var idCard: String?
+    
+    init(_ name: String,_ age: Int,_ idCard: String? = nil) {
+        self.name = name
+        self.age = age
+        self.idCard = idCard
+    }
+    
+    func getInfo() {
+        print("name: \(name) \nage: \(age), \(idCard ?? "")")
+    }
+    
+}
+
+let user1 = User("Kirill", 12, nil)
+//let user2 = User(name: "Igor", age: 45, idCard: nil)
+//let user3 = User(name: "Nastassia", age: 28, idCard: "213124ADASFK")
+
+user1.getInfo()
+let  newUser = User("Test", 11)
+
+user1.getInfo()
+
+newUser.getInfo()
+
+struct Student {
+    var name: String
+    var age: Int
+    
+    
+    func getInfo() {
+        print("name: \(name) \nage: \(age)")
+    }
+}
+
+let student = Student(name: "Kirill", age: 1312)
+student.getInfo()
+
+// Отличия
+
+// структуры - value type, классы - reference type
+
+let structuderStudent = Student(name: "Max", age: 20)
+var structuderStudent2 = structuderStudent
+
+print("--------Structures---------")
+structuderStudent.getInfo()
+structuderStudent2.getInfo()
+
+
+print("----------------------")
+structuderStudent2.age = 15
+structuderStudent.getInfo()
+structuderStudent2.getInfo()
+
+print("-----------Classes-----------")
+
+let classedUser = User("Maxim", 11)
+let classedUser2 = classedUser
+
+classedUser.getInfo()
+classedUser2.getInfo()
+print("----------------------")
+classedUser2.age = 37
+
+classedUser.getInfo()
+classedUser2.getInfo()
+
+print("----------------------")
+
+//___________________
+//                   |
+//        ООП        |
+//___________________|
+
+// Инкапсуляция (Скрыта внутренняя реализация, контроль доступа, защита данных от некорректных изменений)
+
+
+
+class BankAccount {
+    private var balance: Double = 0
+    
+    
+    func deposit(_ amount: Double) {
+        if amount > 0 {
+            balance += amount
+            print("Зачисление на сумму: \(amount), текущий баланс: \(balance)")
+        } else {
+            print("Error, check operation")
+        }
+    }
+    
+    func withdraw(_ amount: Double) {
+        if amount > 0 && balance >= amount {
+            balance -= amount
+            print("Снятие на сумму: \(amount), текущий баланс: \(balance)")
+        } else {
+            print("Error, check operation")
+        }
+    }
+}
+
+var balance = BankAccount()
+
+balance.deposit(100)
+balance.withdraw(12)
+balance.deposit(-20)
+balance.withdraw(1000)
+
+// Наследование
+// (Новые классы на основе существующих.
+// Наследник наследует свойства и методы родителя, может переопределять его свойства и методы.
+// Каждый наследник имеет свои уникальные свойства)
+
+class Person {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func greet() {
+        print("Hello, my name is \(name)")
+    }
+}
+
+class TechPerson: Person {
+    var languageName: String
+    
+    init(name: String, languageName: String) {
+        self.languageName = languageName
+        super.init(name: name)
+    }
+    
+    override func greet() {
+        print("Hello, my name is \(name), i know \(languageName)")
+    }
+    
+    func getInfo() {
+        print("My name is \(name), i know \(languageName)")
+    }
+}
+
+let person = Person(name: "Max")
+let me = TechPerson(name: "Kiryl", languageName: "Swift")
+
+person.greet()
+me.greet()
+
+me.getInfo()
+
+// Полиморфизм (Способность объектов с одинаковыми интерфейсом иметь разную реализацию)
+
+//class Animal {
+//    func makeSound() {
+//        print("Звук не установлен")
+//    }
+//}
+//
+//class Cat: Animal {
+//    override func makeSound() {
+//        print("Мяу")
+//    }
+//}
+//
+//class Dog: Animal {
+//    override func makeSound() {
+//        print("Гав")
+//    }
+//}
+//
+//let animals: [Animal] = [Dog(), Cat()]
+//for animal in animals {
+//    animal.makeSound()
+//}
+
+
+
+// +Абстракция
+
+// Протоколы
+
+protocol Animal {
+    func makeSound()
+}
+
+class Cat: Animal {
+    func makeSound() {
+        print("Мяу")
+    }
+}
+
+protocol Displayable {
+    var screenSize: Double {get set}
+    
+    func display(content: String)
+}
+
+class Smartphone: Displayable {
+    var screenSize: Double = 5.5
+    
+    func display(content: String) {
+        print("Отображение на смартфоне с диаганалью \(screenSize) дюймов: \(content)")
+    }
+}
+
+class Tv: Displayable {
+    var screenSize: Double = 55
+    
+    func display(content: String) {
+        print("Отображение на телевизоне с диаганалью \(screenSize) дюймов: \(content)")
+    }
+}
+
+func showContent(device: Displayable, content: String) {
+    device.display(content: content)
+}
+
+
+showContent(device: Smartphone(), content: "Реклама")
+showContent(device: Tv(), content: "Фильм")
+
+
+
+
